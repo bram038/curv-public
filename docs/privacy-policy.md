@@ -52,4 +52,4 @@ We may update this policy when the app's functionality changes. When we do, we w
 ## 6. Contact
 
 If you have questions about this policy, you can contact us at:  
-**[your contact email address]**
+**braxxtech@gmail.com**
