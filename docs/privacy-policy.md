@@ -1,55 +1,95 @@
 # Privacy Policy — Curv
 
-*Last updated: April 21, 2026*
+*Last updated: May 15, 2026*
 
-**Curv** is a motorcycle route planning app that generates circular routes based on a starting location and your preferred distance and road style. This policy explains what data the app processes and how.
+**Curv** is a motorcycle route planning and navigation app that helps generate round trips and point-to-point routes, save route history, export GPX files, and discover public routes nearby. This policy explains what data the app processes and how.
 
 ---
 
 ## 1. What data we process
 
-### Location data (address input)
-When you type a starting location, the text you enter is sent to a geocoding service to convert it into coordinates. This service runs on our own server and is not shared with third parties. The text is used solely to find the matching location and is not stored after the request completes.
+### Account and app protection
+Curv uses Firebase Authentication to create guest sessions and, if you choose, registered accounts using email/password or Google sign-in. Firebase may process your Firebase user ID, email address, display name, authentication tokens, and sign-in metadata. Curv stores your Firebase user ID, account type, email address and display name when available, account status, premium tier, last-seen time, app version, user agent, and a hashed version of your IP address for account, quota, security, and abuse-prevention purposes. We do not store raw IP addresses in the Curv database.
 
-### Route preferences
-Your selected distance, curve preference, and highway preference are sent to our own routing server (GraphHopper) to calculate a round trip. These preferences are not stored and are not linked to any identity.
+Curv also uses Firebase App Check to verify that requests come from a genuine app build. App Check may use platform integrity services such as Play Integrity, App Attest, or DeviceCheck.
 
-### Map tiles
-The app loads map tiles from Geoapify to display the map. Geoapify receives your approximate map viewport (tile coordinates) and your IP address as part of standard HTTPS requests. Geoapify's privacy policy is available at [https://www.geoapify.com/privacy-policy](https://www.geoapify.com/privacy-policy).
+Firebase privacy information is available at [https://firebase.google.com/support/privacy](https://firebase.google.com/support/privacy).
+
+### Location and place search
+When you type a starting location, destination, or waypoint, the search text is sent to the Curv server to convert it into coordinates. Curv uses its own geocoding service first. If needed, the server may fall back to OpenStreetMap Nominatim. In that fallback case, Nominatim receives the search text as a server-side request from Curv, not directly from the app.
+
+Search text is not stored as a standalone search log. If you generate and save a route, the route name, route points, and coordinates may be stored as part of your route history.
+
+OpenStreetMap/Nominatim policy information is available at [https://operations.osmfoundation.org/policies/nominatim/](https://operations.osmfoundation.org/policies/nominatim/).
+
+### Device location
+If you allow location access, Curv uses your current location to show your position on the map, follow your route during navigation, and find public community routes near you. During active navigation, location updates are processed in the app to calculate progress and guidance. When you search for nearby public routes, your current coordinates are sent to the Curv server for that request.
+
+### Route generation and preferences
+Your route coordinates, route distance, curve preference, highway preference, destination, and waypoints are sent to the Curv server to generate routes. Routing is handled by Curv’s routing server. Curv stores compact weekly usage counters for route generation, geocoding, and GPX exports.
+
+Generated routes are saved to your Curv route history. Saved route data may include route coordinates, start location, route points, instructions, distance, duration, curve count, creation time, and route name. Private route history is kept for your account and older private routes may be pruned automatically. If you publish a route, it becomes visible to other Curv users through community routes and share links.
+
+### Community routes, sharing, and likes
+If you publish a route, Curv stores and displays that route as public. Public routes may include the route path, start area, route summary, share code, publication time, and like count. If you like a public route, Curv stores that like so it can show your liked routes and update the public like count.
+
+### Map display
+Curv’s current map renderer uses MapLibre with OpenFreeMap map styles and tiles by default. OpenFreeMap receives standard HTTPS request information such as your IP address and requested map style/tile resources, which can reveal an approximate map viewport.
+
+Some legacy or fallback builds may request raster map tiles through the Curv server. In that mode, Curv receives the requested tile coordinates and standard request metadata, then fetches map tiles from the configured tile provider, currently OpenStreetMap in production settings. Geoapify is no longer the current production map tile provider, though the backend still contains legacy configuration support for it.
+
+OpenFreeMap privacy information is available at [https://openfreemap.org/privacy/](https://openfreemap.org/privacy/).
+
+### Premium subscriptions
+Curv uses RevenueCat to manage Premium subscriptions and entitlement status. Curv sends your Curv/Firebase user identifier to RevenueCat to check whether Premium is active. RevenueCat, Google Play, and Apple may process purchase and subscription information according to their own policies. Curv does not store your payment card details.
+
+RevenueCat privacy information is available at [https://www.revenuecat.com/privacy/](https://www.revenuecat.com/privacy/).
 
 ### GPX export
-When you export a route, the app generates a GPX file locally on your device and opens your device's share sheet. The file is not uploaded to any server by Curv. What happens to the file after you share it is governed by the app you share it to.
+When you export a route, Curv sends the route coordinates and route name to the Curv server to generate the GPX content and count the export for quota purposes. The app then writes the GPX file to your device cache and opens your device’s share sheet. What happens after you share the file is governed by the app or service you share it to.
 
 ---
 
 ## 2. What data we do NOT collect
 
-- We do not collect your name, email address, or any account information
-- We do not use analytics or advertising SDKs
-- We do not store your location history or past routes
-- We do not sell, rent, or share your data with third parties, except for map tile requests sent to Geoapify as described above
+- We do not use advertising SDKs
+- We do not sell or rent your personal data
+- We do not store raw IP addresses in the Curv database
+- We do not collect contacts, photos, payment card numbers, or phone numbers
+- We do not store continuous navigation location history, except where coordinates are part of saved, exported, shared, or published routes
 
 ---
 
 ## 3. Data storage and retention
 
-The app stores no personal data on our servers. Route preferences and address inputs are processed in memory and discarded after each request. Generated GPX files are written to your device's temporary cache folder and are managed by your operating system.
+Curv stores account, quota, route history, public route, and like data on Curv servers. Private saved route history may be automatically limited to the most recent routes. Public routes remain available while they are published. GPX files written by the app are stored in your device cache and are managed by your operating system.
+
+Curv may retain limited records where needed for security, abuse prevention, operational, legal, or billing-related reasons.
 
 ---
 
-## 4. Children's privacy
+## 4. Account deletion
+
+You can delete your Curv account from the app. Deleting your account removes your Firebase sign-in account and signs you out of Curv. Deleting your Curv account does not automatically cancel a Google Play or Apple subscription; you must cancel subscriptions through the store where you purchased them.
+
+For questions or requests about server-side account or route data, contact us at the address below.
+
+---
+
+## 5. Children’s privacy
 
 Curv is not directed at children under 13. We do not knowingly collect personal information from children.
 
 ---
 
-## 5. Changes to this policy
+## 6. Changes to this policy
 
-We may update this policy when the app's functionality changes. When we do, we will update the date at the top of this page. Continued use of the app after changes constitutes acceptance of the updated policy.
+We may update this policy when the app’s functionality changes. When we do, we will update the date at the top of this page. Continued use of the app after changes constitutes acceptance of the updated policy.
 
 ---
 
-## 6. Contact
+## 7. Contact
 
-If you have questions about this policy, you can contact us at:  
+If you have questions about this policy, you can contact us at:
+
 **braxxtech@gmail.com**
